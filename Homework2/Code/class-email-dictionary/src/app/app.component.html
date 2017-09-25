@@ -1,0 +1,25 @@
+<div class="ui large form segment">
+  <h3 class="ui header">User List</h3>
+  <table>
+    <tr><th>Name</th></tr>
+    <tr *ngFor="let user of classList">
+      <td>{{user.name}}</td>
+    </tr>
+  </table>
+</div>
+
+<form class="ui large form segment">
+  <div class="field">
+    <label for="searchText">KeyWords:</label>
+    <input name="searchText" #searchText
+            placeholder="Enter first and last name">
+  </div>
+  <button (click)="search(searchText)"
+          class="ui positive right floated button">
+    Search
+  </button>
+</form>
+<div class="ui large form segment">
+  <h3 class="ui header">Search Result</h3>
+  {{searchResult}}
+</div>
