@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="root-container">
+        <div class="header">
+            <button id="reverse"> 
+                REVERSE
+            </button>
+            <button id="remove-symbols-numbers"> 
+                REMOVE SYMBOLS & NUMBERS
+            </button>
+            <button id="sort-alphabetically"> 
+                SORT ALPHABETICALLLY
+            </button>
+            <button id="toggle-background-color"> 
+                TOGGLE COLOR
+            </button>
+            <button id="random-color"> 
+                RANDOM COLOR
+            </button>
+            <button id="convert-to-inline">
+                CONVERT TO INLINE
+            </button>
+        </div>
+        <div class="main">
+            <div class="startups-container">
+
+            </div>
+
+        </div>
+        <div class="footer">
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<style>
+    .root-container {
+        position: relative;
+    }
+
+    .root-container .header {
+        position: relative;
+    }
+
+    .root-container .main {
+        position: relative;
+    }
+
+    .root-container .footer {
+        position: relative;
+    }
+
+    .startups-container-pink {
+        background-color: pink !important;
+    }
+
+    .startups-container {
+      background-color: gray;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+    .gold {
+        background-color: gold;
+    }
+</style>
+
+<script>
+    var colors = ['red', 'blue', 'gold'];
+    var chicagoStartupsHTML = [];
+    var chicagoStartups = [
+        '  Interior   Define  ',
+        'Classkick',
+        'teaBOT  .$',
+        'Pritzker Group Venture Capital',
+        'Teln!yx !!',
+        'ShipBob ~~$$$',
+        'Hologram',
+        'Tovala    ',
+        '    MANOR',
+        'ShuttleCloud 999987',
+        'gtrot @@@@@',
+        'DealsGoRound ****',
+        ' Groovebug',
+        'Stage$$$Bloc',
+        'Shiftgig',
+        'ParkWhiz'
+    ];
+    $(document).ready(function () {
+        $.each(chicagoStartups, function (index, startupName) {
+            chicagoStartupsHTML.push('<div>' + startupName + '</div>');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+        $(".startups-container").toggleClass("startups-container-gray");
+        $("#reverse").click(function() { reverse(); });
+        $("#remove-symbols-numbers").click(function() { removeSymbolsAndNumbers(); });
+        $("#sort-alphabetically").click(function() { sort(); });
+        $("#toggle-background-color").click(function() { toggleBkColor(); });
+        $("#random-color").click(function() { randomColor(); });
+        $("#convert-to-inline").click(function() { convertToInline(); });
+    });
+
+    //HOMEWORK 1 PROBLEMS START
+    // 1.CREATE A FUNCTION THAT REVERSES THE LIST OF STARTUPS ON CLICK OF THE REVERSE BUTTON
+    function reverse() {
+        chicagoStartups.reverse();
+        chicagoStartupsHTML = [];
+
+        $.each(chicagoStartups, function (index, startupName) {
+            chicagoStartupsHTML.push('<div>' + startupName + '</div>');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+    }
+    // 2.CREATE A FUNCTION THAT REMOVES ALL SYMBOLS AND NUMBERS FROM COMPANY NAMES ON CLICK OF REMOVE SYMBOLS & NUMBERS BUTTON 
+    //   Stage$$$Bloc => StageBloc
+    function removeSymbolsAndNumbers() {
+        var tmpChicagoStartups = [];
+        $.each(chicagoStartups, function (index, startupName) {
+            var strippedText = (startupName).replace(/[^a-zA-Z]/g, '');
+            tmpChicagoStartups.push(strippedText);
+        });
+
+        chicagoStartups = tmpChicagoStartups;
+        chicagoStartupsHTML = [];
+        $.each(chicagoStartups, function (index, startupName) {
+            chicagoStartupsHTML.push('<div>' + startupName + '</div>');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+    }
+    // 3.CREATE A FUNCTION THAT SORTS STARTUPS IN ALPHABETICAL ORDER ON CLICK OF THE SORT BUTTON
+    function sort() {
+        chicagoStartups.sort(function(a, b) {
+            if (a.toLowerCase() < b.toLowerCase()) return -1;
+            if (a.toLowerCase() > b.toLowerCase()) return 1;
+        });
+
+        chicagoStartupsHTML = [];
+        $.each(chicagoStartups, function (index, startupName) {
+            chicagoStartupsHTML.push('<div>' + startupName + '</div>');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+    }
+    // 4.CREATE A FUNCTION THAT TOGGLES THE BACKGROUND COLOR UPON CLICK OF THE TOGGLE COLOR BUTTON
+    function toggleBkColor() {
+				// Here we can just change the attribute "background-color" of ".startups-container" to "transparent" directly
+				// But we also can try different way as following to change whole class name.
+        if ($(".startups-container").hasClass("startups-container-pink")) {
+            $(".startups-container").removeClass("startups-container-pink");
+        } else {
+            $(".startups-container").toggleClass("startups-container-pink");
+        }
+    }
+    // 5.CREATE A FUNCTION THAT RANDOMLY SELECTS A COLOR CLASS AND APPLIES IT TO EACH COMPANY NAME WHEN THE COLOR BUTTON IS CLICKED
+    function randomColor() {		
+        chicagoStartupsHTML = [];
+        $.each(chicagoStartups, function (index, startupName) {
+            var number = Math.floor(Math.random() * colors.length);
+            chicagoStartupsHTML.push('<div class="' + colors[number] + '">' + startupName + '</div>');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+    }
+    // 6.CREATE A FUNCTION THAT DISPLAYS STARTS AS INLINE ELEMENTS ON CLICK OF CONVERT TO INLINE BUTTON
+    function convertToInline() {
+        chicagoStartupsHTML = [];
+        $.each(chicagoStartups, function (index, startupName) {
+            var number = Math.floor(Math.random() * colors.length);
+            chicagoStartupsHTML.push('<span>' + startupName + '</span>&nbsp;&nbsp;&nbsp;');
+        });
+        $(".startups-container").html(chicagoStartupsHTML.join(""));
+    }
+    //HOMEWORK 1 PROBLEMS END
+
+</script>
