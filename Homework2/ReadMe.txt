@@ -50,8 +50,10 @@ II (Homework Part2)
 	 6. Check result
 III (Homework Part3)
 	 This is web application to search user email by user name.
-		 [List All User First Name and Last Name] show the user name as list
-		 [Search User by First Name and Last Name] Input user first name and last name combined, and click search button to get Email of the user. If no result, show suggestion message.
+    Display a list of first and last names in view
+    Input element in view with placeholder text 'search by first and last name'
+    Html button element that implements search when clicked.
+    Search function in component that returns correct email or 'no matches found'.
 	 No add ons
 	 All features are working
 
