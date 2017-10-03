@@ -1,0 +1,39 @@
+<app-search-text [searchText]="searchText"></app-search-text>
+
+<form class="ui large form segment">
+  <div class="field">
+    <label for="searchTip" class="searchTip">KeyWords:</label>
+    <input name="searchBox" class="searchBox"  #searchBox
+    				(input)="change(searchBox)"
+            placeholder="Enter search words">
+    <button (click)="search()"
+          class="ui positive right floated button searchBtn">
+    Search
+  </button>
+  </div>
+</form>
+<div class="ui large form segment">
+  <h3 class="ui header">Search Result</h3>
+    <table>
+    <tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Doctor Last Name</th></tr>
+    <tr *ngFor="let user of searchResult">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.emailAddress}}</td>
+      <td>{{user.doctorLastName}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="ui large form segment">
+  <h3 class="ui header">Patient List</h3>
+  <table>
+    <tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Doctor Last Name</th></tr>
+    <tr *ngFor="let user of patientList">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.emailAddress}}</td>
+      <td>{{user.doctorLastName}}</td>
+    </tr>
+  </table>
+</div>
