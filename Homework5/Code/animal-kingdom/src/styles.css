@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+}
+
+.ui.items:first-child {
+  margin: 5px !important;
+}
+
+.ui.items:last-child {
+  margin: 5px !important;
+}
+
+.ui.items>.item {
+  border: 1px solid rgba(255, 255, 255, 0.0);
+  border-radius: 5px;
+}
+
+.ui.items>.item.selected {
+  border: 1px solid rgba(255, 255, 255, 0.41);
+  border-radius: 5px;
+}
+
+.ui.items>.item .content {
+  text-align: center;
+}
+
+.ui.items>.item>.content>.header {
+  padding-top: 1em;
+}
+
+.ui.items>.item>.content>.meta {
+  padding-top: 1em;
+}
+
+.ui.items>.item>.content>.description {
+  padding-top: 1em;
+}
+
+.animal-list {
+  display: block;
+}
+
+.animal-row {
+	display: flex;
+  padding: 5px;
+	flex-direction: row | row-reverse | column | column-reverse;
+  border: 1px solid black;
+  height: 325px;
+  overflow: hidden;
+  margin: 10px !important;
+}
+
+.animal-image {
+  float: left;
+}
+
+.animal-info {
+  padding: 30px;
+  float: left;
+}
+
+.animal-image {
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.ui.items>.item {
+  margin: 0 !important;
+}
+
+#level1 {
+  background-color: #449920;
+}
+
+#level2 {
+  background-color: #234662;
+}
+
+#level3 {
+  background-color: #a32081;
+}
+
+
+#level4 {
+  background-color: #33e3f8;
+}
+
+#level5 {
+  background-color: #9922e3;
+}
+

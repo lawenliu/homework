@@ -1,0 +1,8 @@
+<div class="animal-row ui items" id='level{{ + pyramidRow.level}}'>
+  <animal
+    *ngFor="let myAnimal of pyramidRow.animals"
+    [animalData]="myAnimal"
+    (click)='clicked(myAnimal)'
+    [class.selected]="isSelected(myAnimal)">
+  </animal>
+</div>

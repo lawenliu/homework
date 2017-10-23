@@ -1,0 +1,36 @@
+
+<nav>
+	<a routerLink="/history" routerLinkActive="active">Search History</a>
+</nav>
+
+<form class="ui large form segment">
+  <div class="field">
+    <label for="searchTip" class="searchTip">KeyWords:</label>
+    <input name="searchBox" class="searchBox"  #searchBox
+           (input)="change(searchBox)"
+            placeholder="Enter search words">
+    <button (click)="search()"
+          class="ui positive right floated button searchBtn">
+      Search
+    </button>
+  </div>
+</form>
+<div class="ui large form segment">
+  <h3 class="ui header">Wikipedia Search Result</h3>
+    <table>
+    <tr><th>Related Words</th><th>Description</th></tr>
+    <tr *ngFor="let wikipedia of wikipediaSearch.result">
+      <td><a href={{wikipedia.link}}>{{wikipedia.word}}</a></td>
+      <td>{{wikipedia.description}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="ui large form segment">
+  <h3 class="ui header">Giphy Search Result</h3>
+  <table>
+    <tr *ngFor="let giphy of giphySearch.result">
+      <td><img src={{giphy.images.original.url}} /></td>
+    </tr>
+  </table>
+</div>

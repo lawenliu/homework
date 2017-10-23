@@ -1,0 +1,13 @@
+
+<nav><a routerLink="/home" routerLinkActive="active">Home</a></nav>
+
+<div class="ui large form segment">
+  <h3 class="ui header">Search History</h3>
+    <table>
+    <tr><th>Timestamp</th><th>Key Words</th></tr>
+    <tr *ngFor="let history of searchHistories">
+      <td>{{history.timestamp}}</td>
+      <td>{{history.searchWords}}</td>
+    </tr>
+  </table>
+</div>
