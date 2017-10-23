@@ -13,19 +13,19 @@ export class GiphySearchService {
 
   search(query: string) {
     let promise = new Promise((resolve, reject) => {
-    let apiURL = `${GiphySearchService.BASE_URL}&q=${query}`;
-    this.result = [];
-    this.http.get(apiURL)
-      .toPromise()
-      .then(
-        res => { // Success
-          this.result = res.json().data;
-          resolve();
-        },
-        msg => {
-        	reject(msg);
-        }
-      );
+      let apiURL = `${GiphySearchService.BASE_URL}&q=${query}`;
+      this.result = [];
+      this.http.get(apiURL)
+        .toPromise()
+        .then(
+          res => { // Success
+            this.result = res.json().data;
+            resolve();
+          },
+          msg => {
+        	 reject(msg);
+          }
+        );
   	});
 
   	return promise;
