@@ -3,13 +3,13 @@ Wenchuang Liu
 10/23/2017
 CSC 436
 HOMEWORK: #6
-COMPLEXITY: 5/10 LEVEL OF OVERALL 3/10 COMPLEXITY FOR HW ASSIGNMENT 
-APPROXIMATION OF HOURS INVESTED IN ASSIGNMENT: 8 Hours
+COMPLEXITY: 5/10 LEVEL OF OVERALL 5/10 COMPLEXITY FOR HW ASSIGNMENT 
+APPROXIMATION OF HOURS INVESTED IN ASSIGNMENT: 28 Hours
 EXPECTED GRADE: A.
 
 Homework6: https://github.com/lawenliu/homework/tree/master/Homework6
 (Homework): https://github.com/lawenliu/homework/tree/master/Homework6/Code/search-panel
-(Reading) http Sample: https://github.com/lawenliu/homework/tree/master/Homework5/Code/http
+(Reading) Chat Sample: https://github.com/lawenliu/homework/tree/master/Homework6/Code/chat
 
 DESCRIBE APPLICATION INTENT:
 	 This is the application to search word from wikipedia and giphy API service, and then show the result in the view. Also you can check the search history.
