@@ -30,6 +30,5 @@ DESCRIBE APPLICATION INTENT:
 	 3. Open command line to this folder, and install angular-cli
 	 4. Install packages needed by this project "npm install"
 	 5. Run "ng serve" ( if failed with "ng serve", "npm start" should work)
-	 6. Install chrome plugin "Allow-Control-Allow-Origin: *" for wikipedia API access: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
-	 7. Open "http://localhost:4200" to check result
-	 8. Try to search different words.
+	 6. Open "http://localhost:4200" to check result
+	 7. Try to search different words.

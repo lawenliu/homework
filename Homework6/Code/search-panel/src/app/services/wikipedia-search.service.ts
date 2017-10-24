@@ -9,7 +9,7 @@ export class WikipediaSearchService {
   descriptions: string[];
   urls: string[];
 
-  static BASE_URL = 'https://en.wikipedia.org/w/api.php?action=opensearch&limit=5&format=json';
+  static BASE_URL = 'https://en.wikipedia.org/w/api.php?action=opensearch&limit=5&format=json&origin=*';
 
   constructor(private http: Http) {
     this.words = [];
@@ -21,16 +21,8 @@ export class WikipediaSearchService {
   search(query: string) {
     let promise = new Promise((resolve, reject) => {
       let apiURL = `${WikipediaSearchService.BASE_URL}&search=${query}`;
-      const headerDict = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      };
 
-      const headerObj = {                                                                                                                                                                                 
-        headers: new Headers(headerDict), 
-      };
-      this.http.get(apiURL, headerObj)
+      this.http.get(apiURL)
         .toPromise()
         .then(
           res => { // Success
