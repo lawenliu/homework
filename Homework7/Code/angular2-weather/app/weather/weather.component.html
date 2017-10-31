@@ -1,0 +1,65 @@
+<div class="hero">
+	<div class="container">
+		<form action="#" class="find-location">		
+			<input #term (keyup)="$event.keyCode == 13 && search(term.value)" type="text" placeholder="Find your location...">
+			<input type="submit" (click)="search(term.value)" value="Find">
+		</form>		
+	</div>	
+</div>
+
+
+<!-- <div *ngIf="items">{{items | json}}</div>
+<div>
+hello
+{{ items.query?.results?.channel?.location?.city }}
+{{ items.query?.results?.channel?.location?.country }}
+</div>
+
+<div>{{ items.query?.results?.channel?.item?.condition?.temp }}</div>
+<!-- query.results.channel.item.condition.temp -->
+<!-- query.results.channel.language -->
+
+<!-- <div *ngFor="let item of items | async">
+	{{item | json}}	
+	<h1>test</h1>
+</div> -->
+
+<div class="forecast-table">
+	<div class="container" *ngIf="isLoading">
+		<div class="loading"></div>
+	</div>
+	<div class="container" *ngIf="!isLoading">
+		<div class="forecast-container">
+			<div class="today forecast">
+				<div class="forecast-header">
+					<div class="day">{{items.query?.results?.channel?.item?.condition?.date?.slice(0, 3)}}</div>
+					<div class="date">{{items.query?.results?.channel?.item?.condition?.date?.slice(5, 11)}}</div>
+				</div> <!-- .forecast-header -->
+				<div class="forecast-content">
+					<div class="location">{{ items.query?.results?.channel?.location?.city }}, {{ items.query?.results?.channel?.location?.country }}</div>
+					<div class="degree">
+						<div class="num">{{ items.query?.results?.channel?.item?.condition?.temp }}<sup>o</sup>F</div>
+						<div class="forecast-icon">
+							<img src="http://l.yimg.com/a/i/us/we/52/{{items.query?.results?.channel?.item?.condition?.code}}.gif" alt="" width=90>
+						</div>	
+					</div>
+					<span><img src="assets/images/icon-umberella.png" alt="">{{items.query?.results?.channel?.atmosphere?.humidity}}</span>
+					<span><img src="assets/images/icon-wind.png" alt="">{{items.query?.results?.channel?.wind?.speed}}km/h</span>
+					<span><img src="assets/images/icon-compass.png" alt="">{{items.query?.results?.channel?.atmosphere?.visibility}}</span>
+				</div>
+			</div>
+			<div class="forecast" *ngFor="let x of items.query?.results?.channel?.item?.forecast|slice:0:6;">
+				<div class="forecast-header">
+					<div class="day">{{x.day}}</div>
+				</div> <!-- .forecast-header -->
+				<div class="forecast-content">
+					<div class="forecast-icon">
+						<img src="http://l.yimg.com/a/i/us/we/52/{{x.code}}.gif" alt="" width=48>
+					</div>
+					<div class="degree">{{x.high}}<sup>o</sup>C</div>
+					<small>{{x.low}}<sup>o</sup></small>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

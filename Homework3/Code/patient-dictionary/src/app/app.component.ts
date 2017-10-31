@@ -149,13 +149,13 @@ export class AppComponent {
     this.searchResult = [];
     if (strs.length > 1 && strs[0] == ('doctor')) {
       for (var index in this.patientList) {
-        if (this.patientList[index].doctorLastName == strs[1]) {
+        if (this.patientList[index].doctorLastName.toLowerCase() == strs[1].toLowerCase()) {
           this.searchResult.push(this.patientList[index]);
         }
       }
     } else if (strs.length > 1 && strs[0] == ('name')) {
       for (var index in this.patientList) {
-        if (this.patientList[index].firstName.substring(0, 1) == strs[1].substring(0, 1)) {
+        if (this.patientList[index].firstName.substring(0, 1).toLowerCase() == strs[1].substring(0, 1).toLowerCase()) {
           this.searchResult.push(this.patientList[index]);
         }
       }
