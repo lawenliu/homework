@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 	secondButtonTitle: string;
   constructor() {
     this.firstButtonTitle = "Login";
-    this.secondButtonTitle = "Forget Password";
+    this.secondButtonTitle = "Forgot Password";
   }
 
   ngOnInit() {
