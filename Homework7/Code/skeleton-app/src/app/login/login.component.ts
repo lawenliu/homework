@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+	firstButtonTitle: string;
+	secondButtonTitle: string;
+  constructor() {
+    this.firstButtonTitle = "Login";
+    this.secondButtonTitle = "Forget Password";
+  }
 
   ngOnInit() {
   }

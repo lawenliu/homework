@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { DummyData } from './dummy-data/dummy-data';
 
@@ -12,7 +13,9 @@ import { MessagesService } from './message/messages.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(public messagesService: MessagesService,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              public messagesService: MessagesService,
               public threadsService: ThreadsService,
               public usersService: UsersService) {
     DummyData.init(messagesService, threadsService, usersService);
