@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+
+import { UsersService } from './../user/users.service';
+import { User } from './../user/user.model';
 
 @Component({
   selector: 'login',
@@ -8,12 +15,34 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 	firstButtonTitle: string;
 	secondButtonTitle: string;
-  constructor() {
-    this.firstButtonTitle = "Login";
-    this.secondButtonTitle = "Forgot Password";
+  message: string;
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    public usersService: UsersService) {
   }
 
   ngOnInit() {
+    this.firstButtonTitle = "Login";
+    this.secondButtonTitle = "Forgot Password";
+    this.message = "";
   }
 
+  onLogin(email: string, password: string): void {
+    this.usersService.candidateUsers
+      .subscribe(
+        (users: Array<User>) => {
+          users.map( (user: User) => {
+            if (user.email === email && user.password == password) {
+              this.usersService.setCurrentUser(user);
+              this.usersService.setLoginState(true);
+              this.router.navigate(['/about', "home"], {relativeTo: this.route});
+            }
+          });
+        });
+    this.message = "Error: User name or passowrd is not correct!";
+  }
+
+  onForgetPassword() {
+    this.router.navigate(['/forgetpassword'], {relativeTo: this.route});
+  }
 }

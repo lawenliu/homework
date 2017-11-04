@@ -15,10 +15,12 @@
     <ul class="nav navbar-nav navbar-right">
       <li>
         <p class="navbar-text">
-          <button class="btn btn-primary" type="button">
-            Messages <span class="badge">2</span>
-          </button>
-          <a routerLink="/login" routerLinkActive="active">Login</a>
+          <button class="btn btn-primary" type="button" (click)="onShowMessage()">
+            Messages <span class="badge">0</span>
+          </button> &nbsp;&nbsp;
+          <span *ngIf="currentUser">{{currentUser?.firstName}} • {{currentUser?.lastName}}</span>
+          <a *ngIf="currentUser" href="#" (click)="onLogout()">Logout</a>
+          <a *ngIf="!currentUser" routerLink="/login" routerLinkActive="active">Login</a>
         </p>
       </li>
     </ul>

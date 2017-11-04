@@ -14,6 +14,7 @@ interface IMessagesOperation extends Function {
 export class MessagesService {
   // a stream that publishes new messages only once
   newMessages: Subject<Message> = new Subject<Message>();
+  messageBoxState: boolean;
 
   // `messages` is a stream that emits an array of the most up to date messages
   messages: Observable<Message[]>;
@@ -84,11 +85,17 @@ export class MessagesService {
       })
       .subscribe(this.updates);
 
+    this.messageBoxState = false;
   }
 
   // an imperative function call to this action stream
   addMessage(message: Message): void {
     this.newMessages.next(message);
+  }
+
+  // set message box show or hide
+  showMessageBox(state: boolean): void {
+    this.messageBoxState = state;
   }
 
   messagesForThreadUser(thread: Thread, user: User): Observable<Message> {

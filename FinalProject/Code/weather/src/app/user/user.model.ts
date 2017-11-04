@@ -8,7 +8,9 @@ export class User {
 
   constructor(public firstName: string,
               public lastName: string,
-              public emailAddress: string,
+              public email: string,
+              public password: string,
+              public address: string,
               public avatarSrc: string) {
     this.id = uuid();
   }

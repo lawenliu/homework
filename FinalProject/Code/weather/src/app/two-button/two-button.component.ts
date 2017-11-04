@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'two-button',
@@ -8,9 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TwoButtonComponent implements OnInit {
 	@Input() firstTitle: string;
 	@Input() secondTitle: string;
+	@Output() first: EventEmitter<any> = new EventEmitter();
+  @Output() second: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  firstClicked() {
+    this.first.emit();
+  }
+
+  secondClicked() {
+    this.second.emit();
+  }
 }

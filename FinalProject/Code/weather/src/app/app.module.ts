@@ -18,6 +18,7 @@ import { FromNowPipe } from './pipes/from-now.pipe';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   // basic routes
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'forgetpassword', component: ForgetPasswordComponent },  
   { path: '**', redirectTo: 'home' },
 ];
 
@@ -34,13 +36,15 @@ const routes: Routes = [
     AppComponent,
     NavbarComponent,
     LoginComponent,
+    ForgetPasswordComponent,
     TwoButtonComponent,
     ChatBoxComponent,
     ChatMessageComponent,
     FromNowPipe,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

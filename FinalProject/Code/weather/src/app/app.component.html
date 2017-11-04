@@ -1,5 +1,6 @@
 
 <navbar></navbar>
 <div class="container">
-<router-outlet></router-outlet>
+	<router-outlet></router-outlet>
+	<chat-box *ngIf="usersService.loginState && messagesService.messageBoxState"></chat-box>
 </div>

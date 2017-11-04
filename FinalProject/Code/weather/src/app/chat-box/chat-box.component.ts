@@ -23,12 +23,11 @@ export class ChatBoxComponent implements OnInit {
   messages: Observable<any>;
   currentThread: Thread;
   draftMessage: Message;
-  currentUser: User;
-  chatboxShow: boolean = true;  
+  currentUser: User; 
 
   constructor(public messagesService: MessagesService,
               public threadsService: ThreadsService,
-              public UsersService: UsersService,
+              public usersService: UsersService,
               public el: ElementRef) {
   }
 
@@ -42,7 +41,7 @@ export class ChatBoxComponent implements OnInit {
         this.currentThread = thread;
       });
 
-    this.UsersService.currentUser
+    this.usersService.currentUser
       .subscribe(
         (user: User) => {
           this.currentUser = user;
@@ -63,7 +62,7 @@ export class ChatBoxComponent implements OnInit {
   }
 
   onClose(event: any): void {
-    this.chatboxShow = false;
+    this.messagesService.showMessageBox(false);
   }
 
   sendMessage(): void {

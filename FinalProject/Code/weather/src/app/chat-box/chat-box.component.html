@@ -1,4 +1,4 @@
-<div class="chat-window-container" *ngIf="chatboxShow">
+<div class="chat-window-container">
   <div class="chat-window">
     <div class="panel-container">
       <div class="panel panel-default">
@@ -27,7 +27,7 @@
         <div class="input-group">
           <input type="text"
           class="chat-input"
-          placeholder="Write your message here..."
+          placeholder="Ask chatty the chat bot a question..."
           (keydown.enter)="onEnter($event)"
           [(ngModel)]="draftMessage.text" />
           <span class="input-group-btn">

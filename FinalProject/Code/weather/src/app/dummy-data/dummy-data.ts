@@ -8,44 +8,40 @@ import { UsersService } from '../user/users.service';
 import * as moment from 'moment';
 
 // the person using the app us Juliet
-const me: User = new User('Juliet',
+const user1: User = new User('Juliet',
                           'Capulet',
                           'jc@gmail.com',
+                          'test1',
+                          '243 South Wabash Avenue. Chicago, IL 60604',
                           'assets/images/avatars/female-avatar-1.png');
-const echo: User = new User('Romeo',
+const user2: User = new User('Romeo',
                            'Montecchi',
                            'rm@hotmail.com',
+                           'test2',
+                           '2320 N Kenmore Ave. Chicago, IL 60604',
                            'assets/images/avatars/male-avatar-1.png');
+
+const echo: User = new User('Summary',
+                           'Robot',
+                           'sr@hotmail.com',
+                           'test3',
+                           '2350 N Kenmore Ave. Chicago, IL 60604',
+                           'assets/images/avatars/male-avatar-2.png');
 
 const tEcho: Thread    = new Thread('tEcho',
                           echo.firstName + " " + echo.lastName,
                           echo.avatarSrc);
 
+const initialUsers: Array<User> = [
+  user1,
+  user2,
+];
+
 const initialMessages: Array<Message> = [
   new Message({
     author: echo,
     sentAt: moment().subtract(1, 'minutes').toDate(),
-    text: `I\'ll echo whatever you send me`,
-    thread: tEcho
-  }), new Message({
-    author: me,
-    sentAt: moment().subtract(2, 'minutes').toDate(),
-    text: `Yet let me weep for such a feeling loss.`,
-    thread: tEcho
-  }), new Message({
-    author: echo,
-    sentAt: moment().subtract(3, 'minutes').toDate(),
-    text: `So shall you feel the loss, but not the friend which you weep for.`,
-    thread: tEcho
-  }), new Message({
-    author: me,
-    sentAt: moment().subtract(4, 'minutes').toDate(),
-    text: `I\'ll reverse whatever you send me`,
-    thread: tEcho
-  }), new Message({
-    author: echo,
-    sentAt: moment().subtract(5, 'minutes').toDate(),
-    text: `I\'ll wait however many seconds you send to me before responding. Try sending '3'`,
+    text: `I\'ll answer some questions about summary.`,
     thread: tEcho
   }),
 ];
@@ -53,13 +49,16 @@ const initialMessages: Array<Message> = [
 export class DummyData {
   static init(messagesService: MessagesService,
               threadsService: ThreadsService,
-              UsersService: UsersService): void {
+              usersService: UsersService): void {
 
     // TODO make `messages` hot
     messagesService.messages.subscribe(() => ({}));
 
+    usersService.setCandidateUsers(initialUsers);
+
     // set "Juliet" as the current user
-    UsersService.setCurrentUser(me);
+    //usersService.setCurrentUser(initialUsers);
+
 
     // create the initial messages
     initialMessages.map( (message: Message) => messagesService.addMessage(message) );

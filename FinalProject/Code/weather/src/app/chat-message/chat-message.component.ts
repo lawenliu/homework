@@ -23,11 +23,11 @@ export class ChatMessageComponent implements OnInit {
   currentUser: User;
   incoming: boolean;
 
-  constructor(public UsersService: UsersService) {
+  constructor(public usersService: UsersService) {
   }
 
   ngOnInit(): void {
-    this.UsersService.currentUser
+    this.usersService.currentUser
       .subscribe(
         (user: User) => {
           this.currentUser = user;
