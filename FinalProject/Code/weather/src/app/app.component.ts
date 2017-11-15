@@ -6,6 +6,7 @@ import { DummyData } from './dummy-data/dummy-data';
 import { UsersService } from './user/users.service';
 import { ThreadsService } from './thread/threads.service';
 import { MessagesService } from './message/messages.service';
+import { WeatherService } from './weather-info/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,8 @@ export class AppComponent {
               private route: ActivatedRoute,
               public messagesService: MessagesService,
               public threadsService: ThreadsService,
-              public usersService: UsersService) {
-    DummyData.init(messagesService, threadsService, usersService);
+              public usersService: UsersService,
+              public weatherService: WeatherService) {
+    DummyData.init(messagesService, threadsService, usersService, weatherService);
   }
-
-
 }

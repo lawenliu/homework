@@ -13,6 +13,7 @@ import { Thread } from '../thread/thread.model';
 import { ThreadsService } from '../thread/threads.service';
 import { Message } from '../message/message.model';
 import { MessagesService } from '../message/messages.service';
+import { WeatherService } from '../weather-info/weather.service';
 
 @Component({
   selector: 'chat-box',
@@ -23,11 +24,13 @@ export class ChatBoxComponent implements OnInit {
   messages: Observable<any>;
   currentThread: Thread;
   draftMessage: Message;
-  currentUser: User; 
+  currentUser: User;
+  robotUser: User;
 
   constructor(public messagesService: MessagesService,
               public threadsService: ThreadsService,
               public usersService: UsersService,
+              public weatherService: WeatherService,
               public el: ElementRef) {
   }
 
@@ -47,6 +50,12 @@ export class ChatBoxComponent implements OnInit {
           this.currentUser = user;
         });
 
+    this.usersService.robotUser
+      .subscribe(
+        (user: User) => {
+          this.robotUser = user;
+        });
+
     this.messages
       .subscribe(
         (messages: Array<Message>) => {
@@ -62,6 +71,9 @@ export class ChatBoxComponent implements OnInit {
   }
 
   onClose(event: any): void {
+    (<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'close',
+                eventLabel: 'chatbox'});
     this.messagesService.showMessageBox(false);
   }
 
@@ -72,11 +84,28 @@ export class ChatBoxComponent implements OnInit {
     m.isRead = true;
     this.messagesService.addMessage(m);
     this.draftMessage = new Message();
+    
+    let replyMsg = this.weatherService.querySummary(m.text);
+    this.messagesService.addMessage(
+      new Message({
+        author: this.robotUser,
+        text: replyMsg,
+        thread: this.currentThread
+      })
+    );
+
+    (<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'send',
+                eventLabel: 'chatbox'});
   }
 
   scrollToBottom(): void {
     const scrollPane: any = this.el
       .nativeElement.querySelector('.msg-container-base');
     scrollPane.scrollTop = scrollPane.scrollHeight;
+
+    (<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'scroll',
+                eventLabel: 'chatbox'});
   }
 }

@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersService } from './user/users.service';
 import { ThreadsService } from './thread/threads.service';
 import { MessagesService } from './message/messages.service';
+import { WeatherService } from './weather-info/weather.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -19,11 +20,15 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { WeatherComponent } from './weather/weather.component';
+import { SummaryComponent } from './summary/summary.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   // basic routes
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
@@ -44,7 +49,10 @@ const routes: Routes = [
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    WeatherComponent,
+    SummaryComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +61,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes), // <-- routes
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService
+    MessagesService, ThreadsService, UsersService, WeatherService
   ],
   bootstrap: [AppComponent]
 })

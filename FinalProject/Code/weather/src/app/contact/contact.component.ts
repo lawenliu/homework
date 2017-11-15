@@ -10,6 +10,9 @@ export class ContactComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	(<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'view',
+                eventLabel: 'contact'});
   }
 
 }

@@ -18,6 +18,9 @@ export class ForgetPasswordComponent implements OnInit {
         (users: Array<User>) => {
           this.candidateUsers = users;
         });
-  }
 
+    (<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'view',
+                eventLabel: 'forgetpassword'});
+  }
 }

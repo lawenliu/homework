@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit {
             if (user.email === email && user.password == password) {
               this.usersService.setCurrentUser(user);
               this.usersService.setLoginState(true);
-              this.router.navigate(['/about', "home"], {relativeTo: this.route});
+              (<any>window).ga('send', { hitType: 'event',
+                eventCategory: 'csc436', eventAction: 'login',
+                eventLabel: 'authorization'});
+              this.router.navigate(['/home', "home"], {relativeTo: this.route});
             }
           });
         });
